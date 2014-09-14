@@ -25,7 +25,7 @@ if (isset($_POST['id_dispositivo']) && isset($_POST['telefono'])
     $db = new DB_CONNECT();
  
     // mysql inserting a new row
-    $result = mysql_query("INSERT INTO llamada(id_dispositivo, telefono, fecha, cuerpo, estatus) VALUES('$id_dispositivo', '$telefono', '$fecha', '$cuerpo', '$estatus')");
+    $result = mysql_query("INSERT INTO mensaje(id_dispositivo, telefono, fecha, cuerpo, estatus) VALUES('$id_dispositivo', '$telefono', '$fecha', '$cuerpo', '$estatus')");
  
     // check if row inserted or not
     if ($result) {
