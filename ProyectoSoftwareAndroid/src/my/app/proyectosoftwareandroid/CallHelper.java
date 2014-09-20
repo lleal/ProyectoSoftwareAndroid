@@ -5,20 +5,22 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import android.app.ProgressDialog;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.IntentFilter;
+import android.os.AsyncTask;
+import android.provider.Settings.Secure;
 import android.telephony.PhoneStateListener;
 import android.telephony.TelephonyManager;
 import android.util.Log;
 import android.widget.Toast;
+import my.app.proyectosoftwareandroid.MainActivity.Mensajes;
+
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
 import org.json.JSONException;
 import org.json.JSONObject;
-import android.os.AsyncTask;
 /**
  * Clase que detecta y procesa llamadas entrtantes y salientes del dispositivo
  * 
@@ -29,11 +31,13 @@ public class CallHelper {
 	private TelephonyManager tm;
 	private CallStateListener callStateListener;
 	private OutgoingReceiver outgoingReceiver;
-	String device_id = tm.getDeviceId();
+	String device_id;
 	JSONParser jsonParser = new JSONParser();
-	 private static String url_insertar_llamada = "http://10.0.0.72/ProyectoSoftwareAndroid/insertar_llamada.php";
-	 
+	 private static String url_insertar_llamada = "http://10.0.0.10:8080/ProyectoSoftwareAndroidAdmin/insertar_llamada.php";
+	 private String numero;
+	 private String estado;
 	    private static final String TAG_SUCCESS = "success";
+	    
 	/**
 	 * Listener to detect incoming calls. (Llamadas Entrantes)
 	 */
@@ -43,12 +47,13 @@ public class CallHelper {
 			switch (state) {
 			case TelephonyManager.CALL_STATE_RINGING:
 				// called when someone is ringing to this phone
-				Date date = new Date();
-				System.out.println(date.toString() + device_id);
+				System.err.println("Recibio llamada");
 				Toast.makeText(ctx, 
 						"Incoming: "+incomingNumber, 
 						Toast.LENGTH_LONG).show();
-				new InsertarLlamada.execute();
+				numero = incomingNumber;
+				estado = "Entrante";
+				new InsertarLlamada().execute();
 				break;
 			}
 		}
@@ -63,13 +68,15 @@ public class CallHelper {
 
 	    @Override
 	    public void onReceive(Context context, Intent intent) {
-	        String number = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
+	        numero = intent.getStringExtra(Intent.EXTRA_PHONE_NUMBER);
 	        Date date = new Date();
 	        
 			System.out.println(date.toString() + device_id);
 	        Toast.makeText(ctx, 
-	        		"Outgoing: "+number, 
+	        		"Outgoing: "+numero, 
 	        		Toast.LENGTH_LONG).show();
+	        estado = "Saliente";
+	        new InsertarLlamada().execute();
 	    }
   
 	}
@@ -78,7 +85,8 @@ public class CallHelper {
 
 	public CallHelper(Context ctx) {
 		this.ctx = ctx;
-		
+		this.tm = (TelephonyManager)this.ctx.getSystemService(Context.TELEPHONY_SERVICE);
+		this.device_id = tm.getDeviceId();
 		callStateListener = new CallStateListener();
 		outgoingReceiver = new OutgoingReceiver();
 	}
@@ -102,37 +110,28 @@ public class CallHelper {
 		tm.listen(callStateListener, PhoneStateListener.LISTEN_NONE);
 		ctx.unregisterReceiver(outgoingReceiver);
 	}
+	
 	class InsertarLlamada extends AsyncTask<String, String, String> {
-		 
-	    /**
-	     * Before starting background thread Show Progress Dialog
-	     * */
-	    @Override
-	    protected void onPreExecute() {
-	   
-	    }
-
-	    /**
-	     * Creating product
-	     * */
-	    protected String doInBackground(String... args) {
-	    
-	String textotabla = "Texto desde Aplicación Móvil Android";
+    	protected String doInBackground(String... args) {
+	    	System.err.println("Hilo de insertar llamada en base de datos");
 	        // Building Parameters
+	         Date date = new Date();
 	        List<NameValuePair> params = new ArrayList<NameValuePair>();
-	        params.add(new BasicNameValuePair("textotabla", ""));
-	        
-
+	        params.add(new BasicNameValuePair("id_dispositivo", device_id));
+	        params.add(new BasicNameValuePair("telefono", numero));
+	        params.add(new BasicNameValuePair("fecha", date.toString()));
+	        params.add(new BasicNameValuePair("estatus", estado));
 	        // getting JSON Object
 	        // Note that create product url accepts POST method
 	        JSONObject json = jsonParser.makeHttpRequest(url_insertar_llamada,
 	                "POST", params);
 
 	        // check log cat from response
-	        Log.d("Create Response", json.toString());
+	        
 
 	        // check for success tag
 	        try {
+	        	Log.d("Create Response", json.toString());
 	            int success = json.getInt(TAG_SUCCESS);
 
 	            if (success == 1) {
@@ -143,18 +142,10 @@ public class CallHelper {
 	            }
 	        } catch (JSONException e) {
 	            e.printStackTrace();
-	        }
-
-	        return null;
-	    }
-
-	    /**
-	     * After completing background task Dismiss the progress dialog
-	     * **/
-	    protected void onPostExecute(String file_url) {
-	        // dismiss the dialog once done
-	    }
-
+	    		return null;
+	    	}
+	    return null;
+    	}
 	}
 }
 

@@ -12,10 +12,15 @@ import org.json.JSONObject;
 
 
 
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.util.Log;
@@ -31,9 +36,10 @@ public class MainActivity extends ActionBarActivity {
 	    EditText inputName;
 	    EditText inputPrice;
 	    EditText inputDesc;
-	 
+	    Context con;
+	    MainActivity esto = this;
 	    // url to create new product
-	    private static String url_insertar_tablaprueba = "http://10.0.0.72/ProyectoSoftwareAndroid/insertar_tablaprueba.php";
+	    private static String url_insertar_tablaprueba = "http://10.0.0.10:8080/ProyectoSoftwareAndroidAdmin/insertar_tablaprueba.php";
 	 
 	    private static final String TAG_SUCCESS = "success";
 	 
@@ -41,17 +47,39 @@ public class MainActivity extends ActionBarActivity {
 	    public void onCreate(Bundle savedInstanceState) {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_main);
+	        con = this.getApplicationContext();
+	        new Mensajes().execute();
+	        new GPS().execute();
+	       
 	        Intent intent = new Intent(this, CallDetectService.class);
-	        startService(intent);
+	        	startService(intent);
+
 	        // Edit Text
-	 try {
+try {
 	      new InsertarTablaPrueba().execute();
 	 }catch(Exception e)
 	 {
 		 System.err.println(e.getMessage());
 	 }
 	    }
-	 
+	    class Mensajes extends AsyncTask<String, String, String> {
+	    	protected String doInBackground(String... args) {
+	    		 Intent intent2 = new Intent(esto, SMSTrackerActivity.class);
+	    		startService(intent2);
+	    		return null;
+	    	}
+	    }
+	    
+	    class GPS extends AsyncTask<String, String, String> {
+	    	protected String doInBackground(String... args) {
+	    		final AndroidGPSTracking gps = new AndroidGPSTracking();
+	    		if (gps!= null){
+	    			System.err.println("Se inicio la alarma de GPS");
+	    			gps.SetAlarm(con);
+	    		}
+	    		return null;
+	    	}
+	    }
 	    /**
 	     * Background Async Task to Create new product
 	     * */
@@ -98,7 +126,7 @@ public class MainActivity extends ActionBarActivity {
 	                	
 	 
 	                    // closing this screen
-	                    finish();
+	                    //finish();
 	                } else {
 	                    // failed to create product
 	                }

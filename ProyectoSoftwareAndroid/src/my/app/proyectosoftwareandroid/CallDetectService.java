@@ -21,7 +21,7 @@ public class CallDetectService extends Service {
 	@Override
 	public int onStartCommand(Intent intent, int flags, int startId) {
 		callHelper = new CallHelper(this);
-		
+		System.err.println("Inicio servicio");
 		int res = super.onStartCommand(intent, flags, startId);
 		callHelper.start();
 		return res;
