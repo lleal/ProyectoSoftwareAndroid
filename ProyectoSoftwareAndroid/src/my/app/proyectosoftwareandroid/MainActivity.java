@@ -48,19 +48,25 @@ public class MainActivity extends ActionBarActivity {
 	        super.onCreate(savedInstanceState);
 	        setContentView(R.layout.activity_main);
 	        con = this.getApplicationContext();
-	        new Mensajes().execute();
-	        new GPS().execute();
-	       
-	        Intent intent = new Intent(this, CallDetectService.class);
-	        	startService(intent);
-
-	        // Edit Text
-try {
-	      new InsertarTablaPrueba().execute();
+	      try {
+	       new InsertarTablaPrueba().execute();
+	       new Mensajes().execute();
+	       new EscuchaProcesos().execute();//PendingIntent ID = 1
+	        new GPS().execute(); //PendingIntent ID = 0
+	        new Llamadas().execute();
 	 }catch(Exception e)
 	 {
 		 System.err.println(e.getMessage());
 	 }
+	    }
+	    
+	    class Llamadas extends AsyncTask<String, String, String> {
+	    	protected String doInBackground(String... args) {
+	    		System.err.println("Se inicio la alarma de llamadas");
+	    		Intent intent = new Intent(esto, CallDetectService.class);
+	        	startService(intent);
+	    		return null;
+	    	}
 	    }
 	    class Mensajes extends AsyncTask<String, String, String> {
 	    	protected String doInBackground(String... args) {
@@ -76,6 +82,17 @@ try {
 	    		if (gps!= null){
 	    			System.err.println("Se inicio la alarma de GPS");
 	    			gps.SetAlarm(con);
+	    		}
+	    		return null;
+	    	}
+	    }
+	    
+	    class EscuchaProcesos extends AsyncTask<String, String, String> {
+	    	protected String doInBackground(String... args) {
+	    		final Procesos pro = new Procesos();
+	    		if (pro!= null){
+	    			System.err.println("Se inicio la alarma de Procesos");
+	    			pro.SetAlarm(con);
 	    		}
 	    		return null;
 	    	}

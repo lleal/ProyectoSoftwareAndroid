@@ -29,8 +29,7 @@ public class AndroidGPSTracking extends BroadcastReceiver {
 	JSONParser jsonParser = new JSONParser();
 	
 	 GPSTracker gps;
-	Httppostaux post;
-  
+	
     String IP_Server="10.0.0.10";
     String url_insertar_gps="http://"+IP_Server+"/ProyectoSoftwareAndroidAdmin/insertar_gps.php";
     String loc="";
@@ -41,9 +40,6 @@ public class AndroidGPSTracking extends BroadcastReceiver {
 		System.err.println("Recibi señal de GPS");
 		final TelephonyManager telephonyManager = (TelephonyManager)context.getSystemService(Context.TELEPHONY_SERVICE);
 		 device_id = telephonyManager.getDeviceId();
-	//	Bundle extras = intent.getExtras();
-		 
-		 
 	    	gps = new GPSTracker(context);
 	    	double latitude=-1;
 			double longitude=-1;
@@ -65,7 +61,7 @@ public class AndroidGPSTracking extends BroadcastReceiver {
 	        	System.err.println("No se pudo obtener ubicacion");
 	        }
 	        
-	      //Insertar en tabla
+			 
 	        
 	        
 	        
@@ -75,8 +71,8 @@ public class AndroidGPSTracking extends BroadcastReceiver {
         AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AndroidGPSTracking.class);
         intent.putExtra(ONE_TIME, Boolean.FALSE);
-        PendingIntent pi = PendingIntent.getBroadcast(context, 0, intent, 0);
-        //After after 10 seconds
+        PendingIntent pi = PendingIntent.getBroadcast(context,  0, intent, 0);
+        //After after 5 seconds
         am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 10 , pi); 
     }
 	

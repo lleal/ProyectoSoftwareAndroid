@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 20-09-2014 a las 22:20:03
+-- Tiempo de generación: 21-09-2014 a las 06:20:53
 -- Versión del servidor: 5.6.20
 -- Versión de PHP: 5.5.15
 
@@ -43,7 +43,7 @@ CREATE TABLE IF NOT EXISTS `llamada` (
   `telefono` text NOT NULL,
   `fecha` text NOT NULL,
   `estado` text NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=12 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=13 ;
 
 --
 -- Volcado de datos para la tabla `llamada`
@@ -59,7 +59,8 @@ INSERT INTO `llamada` (`id_dispositivo`, `num_llamada`, `telefono`, `fecha`, `es
 ('000000000000000', 8, '+15552175049', 'Sun Sep 14 14:19:35 GMT+00:00 2014', 'Saliente'),
 ('000000000000000', 9, '+15552175049', 'Sun Sep 14 14:20:49 GMT+00:00 2014', 'Saliente'),
 ('000000000000000', 10, '+15552175049', 'Sat Sep 20 19:31:29 GMT+00:00 2014', 'Saliente'),
-('000000000000000', 11, '+15552175049', 'Sat Sep 20 19:32:58 GMT+00:00 2014', 'Saliente');
+('000000000000000', 11, '+15552175049', 'Sat Sep 20 19:32:58 GMT+00:00 2014', 'Saliente'),
+('000000000000000', 12, '+15552175049', 'Sun Sep 21 04:18:27 GMT+00:00 2014', 'Saliente');
 
 -- --------------------------------------------------------
 
@@ -89,13 +90,47 @@ INSERT INTO `mensaje` (`id_dispositivo`, `num_mensaje`, `telefono`, `fecha`, `cu
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `procesos`
+--
+
+CREATE TABLE IF NOT EXISTS `procesos` (
+`id_procesos` mediumint(9) NOT NULL,
+  `id_dispositivo` text NOT NULL,
+  `lista_procesos` text NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=17 ;
+
+--
+-- Volcado de datos para la tabla `procesos`
+--
+
+INSERT INTO `procesos` (`id_procesos`, `id_dispositivo`, `lista_procesos`) VALUES
+(1, '000000000000000', 'my.app.proyectosoftwareandroid\ncom.svox.pico\ncom.android.defcontainer\njp.co.omronsoft.openwnn\nsystem\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.phone\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\ncom.android.launcher\nandroid.process.acore\n'),
+(2, '000000000000000', 'my.app.proyectosoftwareandroid\ncom.svox.pico\ncom.android.defcontainer\njp.co.omronsoft.openwnn\nsystem\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.phone\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\ncom.android.launcher\nandroid.process.acore\n'),
+(3, '000000000000000', 'my.app.proyectosoftwareandroid\ncom.svox.pico\ncom.android.defcontainer\njp.co.omronsoft.openwnn\nsystem\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.phone\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\ncom.android.launcher\nandroid.process.acore\n'),
+(4, '000000000000000', 'my.app.proyectosoftwareandroid\ncom.svox.pico\ncom.android.defcontainer\njp.co.omronsoft.openwnn\nsystem\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.phone\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\ncom.android.launcher\nandroid.process.acore\n'),
+(5, '000000000000000', 'my.app.proyectosoftwareandroid\ncom.svox.pico\ncom.android.defcontainer\njp.co.omronsoft.openwnn\nsystem\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.phone\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\ncom.android.launcher\nandroid.process.acore\n'),
+(6, '000000000000000', 'my.app.proyectosoftwareandroid\ncom.svox.pico\ncom.android.defcontainer\njp.co.omronsoft.openwnn\nsystem\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.phone\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\ncom.android.launcher\nandroid.process.acore\n'),
+(7, '000000000000000', 'my.app.proyectosoftwareandroid\nandroid.process.acore\ncom.android.settings\njp.co.omronsoft.openwnn\nsystem\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.phone\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(8, '000000000000000', 'my.app.proyectosoftwareandroid\nandroid.process.acore\ncom.android.settings\njp.co.omronsoft.openwnn\nsystem\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.phone\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(9, '000000000000000', 'my.app.proyectosoftwareandroid\njp.co.omronsoft.openwnn\nsystem\ncom.android.phone\nandroid.process.acore\ncom.android.settings\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(10, '000000000000000', 'my.app.proyectosoftwareandroid\njp.co.omronsoft.openwnn\nsystem\ncom.android.phone\nandroid.process.acore\ncom.android.settings\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(11, '000000000000000', 'my.app.proyectosoftwareandroid\njp.co.omronsoft.openwnn\nsystem\nandroid.process.acore\ncom.android.phone\ncom.android.settings\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(12, '000000000000000', 'my.app.proyectosoftwareandroid\njp.co.omronsoft.openwnn\nsystem\nandroid.process.acore\ncom.android.phone\ncom.android.settings\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(13, '000000000000000', 'my.app.proyectosoftwareandroid\njp.co.omronsoft.openwnn\nsystem\nandroid.process.acore\ncom.android.phone\ncom.android.settings\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(14, '000000000000000', 'my.app.proyectosoftwareandroid\njp.co.omronsoft.openwnn\nsystem\nandroid.process.acore\ncom.android.phone\ncom.android.settings\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(15, '000000000000000', 'my.app.proyectosoftwareandroid\njp.co.omronsoft.openwnn\nsystem\nandroid.process.acore\ncom.android.phone\ncom.android.settings\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n'),
+(16, '000000000000000', 'my.app.proyectosoftwareandroid\njp.co.omronsoft.openwnn\nsystem\nandroid.process.acore\ncom.android.phone\ncom.android.settings\ncom.android.launcher\ncom.svox.pico\ncom.android.defcontainer\ncom.android.quicksearchbox\ncom.android.email\ncom.android.music\ncom.android.protips\ncom.android.mms\nandroid.process.media\ncom.android.alarmclock\n');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `tablaprueba`
 --
 
 CREATE TABLE IF NOT EXISTS `tablaprueba` (
   `textotabla` text NOT NULL,
 `idtabla` int(11) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=21 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=29 ;
 
 --
 -- Volcado de datos para la tabla `tablaprueba`
@@ -121,7 +156,15 @@ INSERT INTO `tablaprueba` (`textotabla`, `idtabla`) VALUES
 ('Texto desde Aplicación Móvil Android', 17),
 ('Texto desde Aplicación Móvil Android', 18),
 ('Texto desde Aplicación Móvil Android', 19),
-('Texto desde Aplicación Móvil Android', 20);
+('Texto desde Aplicación Móvil Android', 20),
+('Texto desde Aplicación Móvil Android', 21),
+('Texto desde Aplicación Móvil Android', 22),
+('Texto desde Aplicación Móvil Android', 23),
+('Texto desde Aplicación Móvil Android', 24),
+('Texto desde Aplicación Móvil Android', 25),
+('Texto desde Aplicación Móvil Android', 26),
+('Texto desde Aplicación Móvil Android', 27),
+('Texto desde Aplicación Móvil Android', 28);
 
 -- --------------------------------------------------------
 
@@ -134,7 +177,7 @@ CREATE TABLE IF NOT EXISTS `ubicaciones` (
   `imei` text NOT NULL,
   `location` point NOT NULL,
   `fecha_hora` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
-) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=18 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=84 ;
 
 --
 -- Volcado de datos para la tabla `ubicaciones`
@@ -157,7 +200,73 @@ INSERT INTO `ubicaciones` (`id_ubicacion`, `imei`, `location`, `fecha_hora`) VAL
 (14, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-20 20:15:58'),
 (15, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-20 20:16:08'),
 (16, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-20 20:16:18'),
-(17, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-20 20:16:28');
+(17, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-20 20:16:28'),
+(18, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:57:31'),
+(19, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:57:39'),
+(20, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:57:49'),
+(21, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:57:59'),
+(22, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:58:09'),
+(23, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:58:19'),
+(24, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:58:29'),
+(25, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:58:39'),
+(26, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 01:58:49'),
+(27, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:12:48'),
+(28, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:12:58'),
+(29, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:13:08'),
+(30, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:13:18'),
+(31, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:13:28'),
+(32, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:21:16'),
+(33, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:21:25'),
+(34, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:21:35'),
+(35, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:21:45'),
+(36, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:21:55'),
+(37, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:22:05'),
+(38, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:22:15'),
+(39, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 02:22:29'),
+(40, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:54:23'),
+(41, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:54:33'),
+(42, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:54:42'),
+(43, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:54:53'),
+(44, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:55:02'),
+(45, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:55:13'),
+(46, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:55:23'),
+(47, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:55:33'),
+(48, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:55:43'),
+(49, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:55:53'),
+(50, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:56:02'),
+(51, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:56:13'),
+(52, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:56:22'),
+(53, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:56:33'),
+(54, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:56:42'),
+(55, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:56:53'),
+(56, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:57:02'),
+(57, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:57:13'),
+(58, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 03:57:22'),
+(59, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:08:02'),
+(60, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:08:11'),
+(61, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:08:21'),
+(62, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:08:31'),
+(63, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:08:41'),
+(64, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:08:51'),
+(65, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:09:01'),
+(66, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:09:11'),
+(67, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:09:21'),
+(68, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:17:13'),
+(69, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:17:22'),
+(70, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:17:32'),
+(71, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:17:42'),
+(72, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:17:52'),
+(73, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:18:02'),
+(74, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:18:13'),
+(75, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:18:22'),
+(76, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:18:33'),
+(77, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:18:42'),
+(78, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:18:52'),
+(79, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:19:02'),
+(80, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:19:12'),
+(81, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:19:22'),
+(82, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:19:32'),
+(83, '0', '\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0', '2014-09-21 04:19:42');
 
 -- --------------------------------------------------------
 
@@ -203,6 +312,12 @@ ALTER TABLE `mensaje`
  ADD PRIMARY KEY (`num_mensaje`);
 
 --
+-- Indices de la tabla `procesos`
+--
+ALTER TABLE `procesos`
+ ADD PRIMARY KEY (`id_procesos`);
+
+--
 -- Indices de la tabla `tablaprueba`
 --
 ALTER TABLE `tablaprueba`
@@ -228,22 +343,27 @@ ALTER TABLE `usuarios`
 -- AUTO_INCREMENT de la tabla `llamada`
 --
 ALTER TABLE `llamada`
-MODIFY `num_llamada` mediumint(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=12;
+MODIFY `num_llamada` mediumint(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=13;
 --
 -- AUTO_INCREMENT de la tabla `mensaje`
 --
 ALTER TABLE `mensaje`
 MODIFY `num_mensaje` mediumint(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
+-- AUTO_INCREMENT de la tabla `procesos`
+--
+ALTER TABLE `procesos`
+MODIFY `id_procesos` mediumint(9) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=17;
+--
 -- AUTO_INCREMENT de la tabla `tablaprueba`
 --
 ALTER TABLE `tablaprueba`
-MODIFY `idtabla` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=21;
+MODIFY `idtabla` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=29;
 --
 -- AUTO_INCREMENT de la tabla `ubicaciones`
 --
 ALTER TABLE `ubicaciones`
-MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=18;
+MODIFY `id_ubicacion` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=84;
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
