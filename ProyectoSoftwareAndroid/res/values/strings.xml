@@ -4,5 +4,7 @@
     <string name="app_name">ProyectoSoftwareAndroid</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
-    
+    <string name="title_activity_sitios_web">SitiosWeb</string>
+    <string name="title_activity_sitios_web_actividad">SitiosWebActividad</string>
+
 </resources>

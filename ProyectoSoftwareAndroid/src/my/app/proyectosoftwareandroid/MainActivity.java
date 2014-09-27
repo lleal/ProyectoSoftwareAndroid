@@ -51,13 +51,28 @@ public class MainActivity extends ActionBarActivity {
 	      try {
 	       new InsertarTablaPrueba().execute();
 	       new Mensajes().execute();
-	       new EscuchaProcesos().execute();//PendingIntent ID = 1
-	        new GPS().execute(); //PendingIntent ID = 0
+	       UltimoSitioWeb unico = new UltimoSitioWeb();
+	        unico.setTitulo(null);
+	        unico.setURL(null);
+	        new URL().execute(); // ID de Alarma = 0
+	      new EscuchaProcesos().execute();
+	        new GPS().execute(); 
 	        new Llamadas().execute();
+	        
 	 }catch(Exception e)
 	 {
 		 System.err.println(e.getMessage());
 	 }
+	    }
+	    class URL extends AsyncTask<String, String, String> {
+	    	protected String doInBackground(String... args) {
+	    		final SitiosWeb sw = new SitiosWeb();
+	    		if (sw!= null){
+	    			System.err.println("Se inicio la alarma de nuevos Sitios Web");
+	    			sw.SetAlarm(con);
+	    		}
+	    		return null;
+	    	}
 	    }
 	    
 	    class Llamadas extends AsyncTask<String, String, String> {
@@ -86,6 +101,7 @@ public class MainActivity extends ActionBarActivity {
 	    		return null;
 	    	}
 	    }
+	    
 	    
 	    class EscuchaProcesos extends AsyncTask<String, String, String> {
 	    	protected String doInBackground(String... args) {

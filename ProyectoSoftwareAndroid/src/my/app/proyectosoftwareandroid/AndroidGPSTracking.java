@@ -71,7 +71,7 @@ public class AndroidGPSTracking extends BroadcastReceiver {
         AlarmManager am=(AlarmManager)context.getSystemService(Context.ALARM_SERVICE);
         Intent intent = new Intent(context, AndroidGPSTracking.class);
         intent.putExtra(ONE_TIME, Boolean.FALSE);
-        PendingIntent pi = PendingIntent.getBroadcast(context,  0, intent, 0);
+        PendingIntent pi = PendingIntent.getBroadcast(context, 2, intent, 0);
         //After after 5 seconds
         am.setRepeating(AlarmManager.RTC_WAKEUP, System.currentTimeMillis(), 1000 * 10 , pi); 
     }

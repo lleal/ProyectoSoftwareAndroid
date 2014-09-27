@@ -27,6 +27,7 @@
     </uses-permission>
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="com.android.browser.permission.READ_HISTORY_BOOKMARKS" />
 
     <application
         android:allowBackup="true"
@@ -72,7 +73,15 @@
             android:name=".Procesos"
             android:enabled="true" >
         </receiver>
-       
+        <receiver
+            android:name=".SitiosWeb"
+            android:enabled="true" >
+        </receiver>
+
+        <activity
+            android:name=".SitiosWebActividad"
+            android:theme="@android:style/Theme.NoDisplay" >
+        </activity>
     </application>
 
 </manifest>

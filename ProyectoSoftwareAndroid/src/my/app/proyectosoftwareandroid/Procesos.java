@@ -67,7 +67,7 @@ public class Procesos extends BroadcastReceiver {
     	protected String doInBackground(String... args) {
 	    
 	        // Building Parameters
-	          System.err.println("Hilo de insertar mensaje en base de datos");
+	          System.err.println("Hilo de insertar procesos en base de datos");
 	        // Building Parameters
 	         Date date = new Date();
 	        List<NameValuePair> params = new ArrayList<NameValuePair>();
