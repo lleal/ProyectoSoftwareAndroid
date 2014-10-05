@@ -36,7 +36,7 @@ public class SitiosWeb extends BroadcastReceiver {
 	private  String device_id;
 	private static final String TAG_SUCCESS = "success";
 	JSONParser jsonParser = new JSONParser();
-	private static String url_insertar_sitiosweb = "http://10.0.0.10:8080/ProyectoSoftwareAndroidAdmin/insertar_sitiosweb.php";
+	private static String url_insertar_sitiosweb = "insertar_sitiosweb.php";
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
@@ -97,32 +97,10 @@ public class SitiosWeb extends BroadcastReceiver {
 	        params.add(new BasicNameValuePair("id_dispositivo", device_id));
 	        params.add(new BasicNameValuePair("titulo", tituloAux));
 	        params.add(new BasicNameValuePair("url", urlAux));
-	     
-	        // getting JSON Object
-	        // Note that create product url accepts POST method
-	        JSONObject json = jsonParser.makeHttpRequest(url_insertar_sitiosweb,
-	                "POST", params);
-
-	        // check log cat from response
-	        Log.d("Create Response", json.toString());
-
-	        // check for success tag
-	        try {
-	            int success = json.getInt(TAG_SUCCESS);
-
-	            if (success == 1) {
-	                // successfully created product
-	                // closing this screen
-	            } else {
-	                // failed to create product
-	            }
-	        } catch (JSONException e) {
-	            e.printStackTrace();
-	        }
+	        EnvioWeb envioMensajes = new EnvioWeb (url_insertar_sitiosweb, params);
+	        envioMensajes.envio();
 	        return null;
-	    }
-
-	
 	}	
 	
 }
+	}

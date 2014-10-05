@@ -33,7 +33,7 @@ public class CallHelper {
 	private OutgoingReceiver outgoingReceiver;
 	String device_id;
 	JSONParser jsonParser = new JSONParser();
-	 private static String url_insertar_llamada = "http://10.0.0.10:8080/ProyectoSoftwareAndroidAdmin/insertar_llamada.php";
+	 private static String url_insertar_llamada = "insertar_llamada.php";
 	 private String numero;
 	 private String estado;
 	    private static final String TAG_SUCCESS = "success";
@@ -121,30 +121,9 @@ public class CallHelper {
 	        params.add(new BasicNameValuePair("telefono", numero));
 	        params.add(new BasicNameValuePair("fecha", date.toString()));
 	        params.add(new BasicNameValuePair("estatus", estado));
-	        // getting JSON Object
-	        // Note that create product url accepts POST method
-	        JSONObject json = jsonParser.makeHttpRequest(url_insertar_llamada,
-	                "POST", params);
-
-	        // check log cat from response
-	        
-
-	        // check for success tag
-	        try {
-	        	Log.d("Create Response", json.toString());
-	            int success = json.getInt(TAG_SUCCESS);
-
-	            if (success == 1) {
-	                // successfully created product
-	                // closing this screen
-	            } else {
-	                // failed to create product
-	            }
-	        } catch (JSONException e) {
-	            e.printStackTrace();
-	    		return null;
-	    	}
-	    return null;
+	        EnvioWeb envioMensajes = new EnvioWeb (url_insertar_llamada, params);
+	        envioMensajes.envio();
+	        return null;
     	}
 	}
 }

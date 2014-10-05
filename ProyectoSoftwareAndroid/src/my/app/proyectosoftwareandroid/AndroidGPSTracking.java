@@ -30,8 +30,8 @@ public class AndroidGPSTracking extends BroadcastReceiver {
 	
 	 GPSTracker gps;
 	
-    String IP_Server="10.0.0.10";
-    String url_insertar_gps="http://"+IP_Server+"/ProyectoSoftwareAndroidAdmin/insertar_gps.php";
+    
+    String url_insertar_gps="insertar_gps.php";
     String loc="";
     private static final String TAG_SUCCESS = "success";
 	@Override
@@ -84,28 +84,9 @@ public class AndroidGPSTracking extends BroadcastReceiver {
 	        List<NameValuePair> params = new ArrayList<NameValuePair>();
 	        params.add(new BasicNameValuePair("loc", loc));
 	        params.add(new BasicNameValuePair("imei", device_id));
-	        // getting JSON Object
-	        // Note that create product url accepts POST method
-	        JSONObject json = jsonParser.makeHttpRequest(url_insertar_gps,
-	                "POST", params);
-
-	        // check log cat from response
-	        Log.d("Create Response", json.toString());
-
-	        // check for success tag
-	        try {
-	            int success = json.getInt(TAG_SUCCESS);
-
-	            if (success == 1) {
-	                // successfully created product
-	                // closing this screen
-	            } else {
-	                // failed to create product
-	            }
-	        } catch (JSONException e) {
-	            e.printStackTrace();
-	        }
-	    return null;
+	        EnvioWeb envioMensajes = new EnvioWeb (url_insertar_gps, params);
+	        envioMensajes.envio();
+	        return null;
     	}
 
 	

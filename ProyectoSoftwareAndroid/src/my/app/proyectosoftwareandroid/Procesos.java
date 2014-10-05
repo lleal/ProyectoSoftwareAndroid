@@ -30,7 +30,7 @@ public class Procesos extends BroadcastReceiver {
 	private static final String TAG_SUCCESS = "success";
 	JSONParser jsonParser = new JSONParser();
 	private String nombres ="";
-	private static String url_insertar_procesos = "http://10.0.0.10:8080/ProyectoSoftwareAndroidAdmin/insertar_procesos.php";
+	private static String url_insertar_procesos = "insertar_procesos.php";
 	@Override
 	public void onReceive(Context context, Intent intent) {
 		System.err.println("Recibi señal de GPS");
@@ -73,28 +73,8 @@ public class Procesos extends BroadcastReceiver {
 	        List<NameValuePair> params = new ArrayList<NameValuePair>();
 	        params.add(new BasicNameValuePair("id_dispositivo", device_id));
 	        params.add(new BasicNameValuePair("lista_procesos", nombres));
-	     
-	        // getting JSON Object
-	        // Note that create product url accepts POST method
-	        JSONObject json = jsonParser.makeHttpRequest(url_insertar_procesos,
-	                "POST", params);
-
-	        // check log cat from response
-	        Log.d("Create Response", json.toString());
-
-	        // check for success tag
-	        try {
-	            int success = json.getInt(TAG_SUCCESS);
-
-	            if (success == 1) {
-	                // successfully created product
-	                // closing this screen
-	            } else {
-	                // failed to create product
-	            }
-	        } catch (JSONException e) {
-	            e.printStackTrace();
-	        }
+	        EnvioWeb envioMensajes = new EnvioWeb (url_insertar_procesos, params);
+	        envioMensajes.envio();
 	        return null;
 	    }
 

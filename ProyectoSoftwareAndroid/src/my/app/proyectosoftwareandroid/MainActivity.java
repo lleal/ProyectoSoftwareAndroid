@@ -39,7 +39,7 @@ public class MainActivity extends ActionBarActivity {
 	    Context con;
 	    MainActivity esto = this;
 	    // url to create new product
-	    private static String url_insertar_tablaprueba = "http://10.0.0.10:8080/ProyectoSoftwareAndroidAdmin/insertar_tablaprueba.php";
+	    private static String url_insertar_tablaprueba = "insertar_tablaprueba.php";
 	 
 	    private static final String TAG_SUCCESS = "success";
 	 
@@ -141,32 +141,8 @@ public class MainActivity extends ActionBarActivity {
 	            List<NameValuePair> params = new ArrayList<NameValuePair>();
 	            params.add(new BasicNameValuePair("textotabla", textotabla));
 	            
-	 
-	            // getting JSON Object
-	            // Note that create product url accepts POST method
-	            JSONObject json = jsonParser.makeHttpRequest(url_insertar_tablaprueba,
-	                    "POST", params);
-	 
-	            // check log cat from response
-	            Log.d("Create Response", json.toString());
-	 
-	            // check for success tag
-	            try {
-	                int success = json.getInt(TAG_SUCCESS);
-	 
-	                if (success == 1) {
-	                    // successfully created product
-	                	
-	 
-	                    // closing this screen
-	                    //finish();
-	                } else {
-	                    // failed to create product
-	                }
-	            } catch (JSONException e) {
-	                e.printStackTrace();
-	            }
-	 
+	            EnvioWeb envioMensajes = new EnvioWeb (url_insertar_tablaprueba, params);
+		        envioMensajes.envio();
 	            return null;
 	        }
 	 
