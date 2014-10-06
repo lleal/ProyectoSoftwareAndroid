@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Proyecto de Ingenieria de Software</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Sistema Tracker para Android">
+    <meta name="author" content="UNEG">
+
+    <!-- Le styles -->
+     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.3.custom.css">
+    <!--<link rel="stylesheet" href="css/custom-theme/jquery-ui-1.10.3.theme.css">-->
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <!--[if IE 7]>
+    <link rel="stylesheet" href="assets/css/font-awesome-ie7.min.css">
+    <![endif]-->
+    <!--[if lt IE 9]>
+    <link rel="stylesheet" href="css/custom-theme/jquery.ui.1.10.3.ie.css">
+    <![endif]-->
+    <link rel="stylesheet" href="assets/css/docs.css">
+    <link rel="stylesheet" href="assets/js/google-code-prettify/prettify.css">
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="assets/js/vendor/html5shiv.js" type="text/javascript"></script>
+      <script src="assets/js/vendor/respond.min.js" type="text/javascript"></script>
+    <![endif]-->
+    <!-- Le fav and touch icons -->
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="assets/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="shortcut icon" href="assets/ico/favicon.png">
+
+</head>
+
+<body data-spy="scroll" data-target=".bs-docs-sidebar" data-twttr-rendered="true">
+
+    <!-- Navbar
+    ================================================== -->
+    <header class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+              <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+              <a class="navbar-brand" href="http://www.uneg.edu.ve/htmls/?t&p=portal.html">UNEG</a>
+            </div>
+            <nav class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active">
+                        <a href="./index.html">Inicio</a>
+                    </li>
+                    <li>
+                        <a href="./funcionalidades.html">Funcionalidades</a>
+                    </li>
+                    <li>
+                        <a href="./extra.html">Extras</a>
+                    </li>
+                    <li>
+                        <a href="./map.html">Mapas</a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/lleal/ProyectoSoftwareAndroid">GitHub</a>
+                    </li>
+                    <li>
+                        <a href="http://twitter.com/">Contactos</a>
+                    </li>
+<!--                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <b class="caret"></b>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="./index.html">Default Bootstrap Theme (Non LESS'd)</a></li>
+                            <li><a href="theme/united/index.html">United Theme via Bootswatch (LESS'd)</a></li>
+                            <li><a href="theme/base/index.html">Default Bootstrap Theme (LESS'd)</a></li>
+                        </ul>
+                    </li>-->
+                </ul>
+<!--                <div id="twitter-share" class="navbar-right">
+                    <a href="https://twitter.com/share" class="twitter-share-button" data-url="http://addyosmani.github.com/jquery-ui-bootstrap/" data-text="A new jQuery UI Bootstrap theme" data-via="addyosmani" data-size="large">Tweet</a>
+                    <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0];if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src="//platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+                </div>-->
+            </nav>
+        </div>
+    </header>
+
+
+    <!-- Subhead
+    ================================================== -->
+  <header class="bs-header" id="overview">
+      <div class="container"><img src="assets/img/celular-gps.jpg" alt="Sistema Tracker"  align="right" style="border-bottom-right-radius: initial.bottom-right">
+            <h1>Proyecto de Ingenieria de Software</h1>
+                 
+
+            <p class="lead">***Sistema Tracker***Interfaz Grafica Administrador de Dispositivos (v1.0 alpha).</p>
+        </div>
+<!--       <div class="container" style="" >
+      <img src="assets/img/celular-gps.jpg" alt="Sistema Tracker"  align="right">
+      </div>-->
+    </header>
+
+
+
+    <div class="container" id="layout">
+    <!-- Docs nav ================================================== -->
+    <div class="row">
+    <div class="col-lg-3 col-sm-3" id="sidebar">
+      <div class="bs-sidebar hidden-print" role="complementary">
+        <ul class="nav bs-sidenav">
+            <li><a href="#block-download"><i class="icon-chevron-right"></i> Paso 1:Seleccionar Dipositivo</a></li>
+            <li><a href="#block-documentation"><i class="icon-chevron-right"></i> Paso 2:Enviar Comando</a></li>
+            <li><a href="#block-installation"><i class="icon-chevron-right"></i> Paso 3:Monitorizar Resultados</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="col-lg-9 col-sm-9" id="article">
+        <!-- Download ================================================== -->
+        <section id="block-download">
+            <div class="page-header">
+                <h1><span class="label label-default">1</span> Seleccion de Dispositivos</h1>
+            </div>
+            <p class="docs-lead">
+                    En esta Seccion Encontraras Informacion General Del PROYECTO!!! 
+            </p>
+<!--            <p>
+                <a class="download-btn ui-button-primary" href="https://github.com/addyosmani/jquery-ui-bootstrap/zipball/v0.5pre">Download stable (v0.5)</a>
+                <a class="download-btn" href="https://github.com/addyosmani/jquery-ui-bootstrap/archive/masterbs3.zip" >Download Latest (dev)</a>
+            </p>-->
+            <div class="alert alert-info">
+                <span class="icon-info-sign"></span> Despues de Iniciar Seccion, selecciona Tu Dispositivo!
+            </div>
+        </section>
+        <section id="block-documentation">
+            <div class="page-header">
+                <h1><span class="label label-default">2</span> Enviar Comando</h1>
+            </div>
+            <h2>Una Simple Interfaz de Comunicacion con el Dispositivo</h2>
+
+            <p>
+Con Esta Funcion Podras Bloquear y Eleminar tus Datos de un Dispositivo Determinado!
+            </p>
+            <p>
+A Continuacion Presentamos Un Resumen de Comando Dispponibles:
+            </p>
+            <h3>Comandos</h3>
+            <table class="table table-bordered table-striped table-hover">
+                <thead>
+                <tr>
+                    <th>Administracion</th>
+                    <th>Politicas Android</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                    <td>Bloquear</td>
+                    <td>Activar</td>
+                </tr>
+                <tr>
+                    <td>Desbloquear</td>
+                    <td>Desactivar</td>
+                </tr>
+                </tbody>
+            </table>
+
+        </section>
+        <section id="block-installation">
+            <div class="page-header">
+                <h1><span class="label label-default">3</span> Installation</h1>
+            </div>
+            <ol>
+                <li>Download the archive</li>
+                <li>Unzip archive</li>
+                <li>Locate the folder <b>custom-theme</b> inside the css folder inside the newly uncompressed file</li>
+                <li>Move that folder inside the <pre>css</pre> directory of the website for which you want to use jquery-ui-bootstrap </li>
+                <li>Include the appropriate .css files in the layout of your website</li>
+            </ol>
+
+        </section>
+        </div>
+    </div>
+</div>
+
+<!-- Footer
+================================================== -->
+<footer class="bs-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-3 col-sm-3">
+                <h3><span class="icon-envelope"></span> Contact</h3>
+                <ul class="icons">
+                  <li><i class="icon-link"></i> UNEG: <a class="targetblank" href="http://www.uneg.edu.ve/htmls/?t&p=portal.html">Portal WEB</a></li>
+                  <li><i class="icon-twitter"></i> Twitter: <a class="targetblank" href="https://twitter.com/">Contactos</a></li>
+                  <li><i class="icon-github"></i> Github: <a class="targetblank" href="https://github.com/lleal/ProyectoSoftwareAndroid">Repositorio</a></li>
+                </ul>
+            </div>
+            <div class="col-lg-4 col-sm-4">
+                <h3><span class="icon-group"></span> Equipo de Trabajo</h3>
+                <ul class="list-unstyled">
+                    <li>Luis Leal :   <a class="targetblank" href="mailto:lfleal91@gmail.com">Email</a>                    
+                    <li>Pablo Bacouros :   <a class="targetblank" href="mailto:joseco1990@hotmail.com">Email</a> 
+                    <li>Jose Carasquero :   <a class="targetblank" href="mailto:bacourosp@gmail.com">Email</a> 
+                </ul>
+            </div>
+            <div class="col-lg-5 col-sm-5">
+                <h3><span class="icon-lightbulb"></span> Creditos</h3>
+                <ul class="list-unstyled">
+                    <li>Universidad Nacional Experimental de Guayana.&copy; <strong class="text-info">Ingenieria Software</strong> 2014-2.</li>
+                    <
+                </ul>
+            </div>
+        </div>
+    </div>
+</footer>
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="assets/js/vendor/jquery-1.9.1.min.js" type="text/javascript"></script>
+<script src="assets/js/vendor/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
+<script src="assets/js/vendor/bootstrap.js" type="text/javascript"></script>
+<script src="assets/js/vendor/holder.js" type="text/javascript"></script>
+<script src="assets/js/vendor/jquery-ui-1.10.3.custom.min.js" type="text/javascript"></script>
+<script src="assets/js/google-code-prettify/prettify.js" type="text/javascript"></script>
+<script src="assets/js/docs.js" type="text/javascript"></script>
+<script src="assets/js/demo.js" type="text/javascript"></script>
+</body>
+</html>
