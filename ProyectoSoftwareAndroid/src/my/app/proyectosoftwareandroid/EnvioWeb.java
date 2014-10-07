@@ -10,7 +10,7 @@ import org.json.JSONObject;
 import android.util.Log;
 
 public class EnvioWeb {
-	private String url = "http://192.168.90.1/ProyectoSoftwareAndroidAdmin/";
+	private String url = "http://192.168.90.1/AdministradorTracker/ProyectoSoftwareAndroidAdmin/";
 	List<NameValuePair> params;
 	JSONParser jsonParser = new JSONParser();
 	private static final String TAG_SUCCESS = "success";

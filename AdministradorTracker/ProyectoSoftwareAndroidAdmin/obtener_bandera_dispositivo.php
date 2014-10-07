@@ -22,14 +22,15 @@ $db = new DB_CONNECT();
 //if (isset($_GET['id_dispositivo']) && isset($_GET['telefono']) 
 //        && isset($_GET['fecha'])&& isset($_GET['cuerpo']) && isset($_GET['estatus']) ) {
 // 
-   $id_dispositivo = $_GET['id_dispositivo'];
+   
 //    $telefono = $_GET['telefono'];
 //    $fecha = $_GET['fecha'];
 //    $cuerpo = $_GET['cuerpo'];
 //    $estatus = $_GET['estatus'];
- if(TRUE){
+ if(($_GET['imei'])){
+     $id_dispositivo = $_GET['imei'];
     // get a product from products table--->SELECT *FROM mensaje WHERE id_dispositivo = $id_dispositivo
-    $result = mysql_query("SELECT `bandera` FROM `dispositivos` WHERE 'imei' = '$id_dispositivo'");
+    $result = mysql_query("SELECT * FROM `dispositivos` WHERE 'imei' = '$imei'");
  
     if (!empty($result)) {
         // check for empty result
@@ -37,8 +38,10 @@ $db = new DB_CONNECT();
  
             $result = mysql_fetch_array($result);
             //$bandera = $result;
-          //  $bloqueo = array();
-           // $bloqueo["bandera"] = $result["bandera"];
+            $dispositivo = array();
+            $dispositivo["imei"] = $result["imei"];
+            $dispositivo["bandera"] = $result["bandera"];
+            
 //            $product["telefono"] = $result["telefono"];
 //            $product["fecha"] = $result["fecha"];
 //            $product["cuerpo"] = $result["cuerpo"];
@@ -48,17 +51,17 @@ $db = new DB_CONNECT();
             $response["success"] = 1;
  
             // user node
-           // $response["bloqueo"] = array();
-            $response["bandera"] = $result["bandera"];
-            //array_push($response["bandera"], $result);
-            $_GET['bandera'] = $result["bandera"] ; 
+            $response["dispositivo"] = array();
+            
+            array_push($response["dispositivo"], $result);
+            
  //$_GET['bandera'] = $bloqueo ;             
 // echoing JSON response
             echo json_encode($response);
         } else {
             // no product found
             $response["success"] = 0;
-            $response["message"] = "No product found";
+            $response["message"] = "No encontrado el dispositivo";
  
             // echo no users JSON
             echo json_encode($response);
@@ -66,7 +69,7 @@ $db = new DB_CONNECT();
     } else {
         // no product found
         $response["success"] = 0;
-        $response["message"] = "No product found";
+        $response["message"] = "No encontrado el dispositivo";
  
         // echo no users JSON
         echo json_encode($response);

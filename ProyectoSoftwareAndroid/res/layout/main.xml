@@ -7,11 +7,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="my.app.proyectosoftwareandroid.MainActivity" xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/hello_world" />
-
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -34,6 +29,13 @@
             android:textOff="@string/device_admin_disabled"
             android:textOn="@string/device_admin_enabled" />
 
+    <Button
+        android:id="@+id/uploadButton"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Click To Upload Files"
+        tools:ignore="HardcodedText" />
+
         <Button
             android:id="@+id/button_lock_device"
             android:layout_width="wrap_content"
@@ -49,6 +51,15 @@
             android:onClick="onClick"
             android:text="@string/reset_device"
             android:visibility="invisible" />
+        <TextView 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text=""
+        android:id="@+id/messageText"
+        android:textColor="#000000"
+        android:textStyle="bold"
+    />
+        
     </LinearLayout>
 
 </RelativeLayout>
